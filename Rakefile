@@ -1,3 +1,9 @@
+begin
+  require 'bundler/gem_tasks'
+rescue LoadError
+  warn "No bundler found, you won't be able to build the gem."
+end
+
 require 'rake/testtask'
 
 Rake::TestTask.new do |t|
