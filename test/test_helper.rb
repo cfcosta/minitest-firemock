@@ -1,5 +1,4 @@
 require 'minitest/unit'
-require 'minitest/fire_mock'
 
 MiniTest::Unit.autorun
 
