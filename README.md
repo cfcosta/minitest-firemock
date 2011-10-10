@@ -28,11 +28,10 @@ class MyOtherClassTest < MiniTest::Unit::TestCase
 end
 ```
 
-The only real difference of using `MiniTest::FireMock` instead of `MiniTest::Mock` is that if `MyClass` is defined, and `my_method` isn't there, it'll raise a `MockExpectationError`.
+The only real difference of using `MiniTest::FireMock` instead of `MiniTest::Mock` is that if `MyClass` is defined, and `my_method` isn't there, it'll raise a `MockExpectationError`. It checks also for the arity of the method, so it'll raise a `MockExpectationError` if the real method have a different arity than the expectation.
 
 TODO
 ----
 
-- Check for the arity of the methods if they are defined.
 - Mock class/module methods too.
 - Make it work with method_missing (as of now it doesn't, even if the #responds_to? is correct)

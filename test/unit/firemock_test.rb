@@ -43,4 +43,11 @@ class FireMockTest < MiniTest::Unit::TestCase
       mock.expect(:not_defined_method, 42)
     end
   end
+
+  def test_valid_mock_with_different_arity
+    mock = MiniTest::FireMock.new('DefinedConstant')
+    assert_raises MockExpectationError, "`defined_method` expects 0 arguments, given 3" do
+      mock.expect(:defined_method, 42, [1,2,3])
+    end
+  end
 end

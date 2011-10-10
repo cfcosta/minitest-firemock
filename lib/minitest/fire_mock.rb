@@ -14,6 +14,10 @@ class MiniTest::FireMock < MiniTest::Mock
       raise MockExpectationError, "expected #{@constant_name} to define `#{name}`, but it doesn't"
     end
 
+    if method and method.arity != args.size
+      raise MockExpectationError, "`#{name}` expects #{method.arity} arguments, given #{args.size}"
+    end
+
     super(name, retval, args)
   end
 
