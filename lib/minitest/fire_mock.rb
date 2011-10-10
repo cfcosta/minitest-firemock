@@ -9,7 +9,8 @@ class MiniTest::FireMock < MiniTest::Mock
   end
 
   def expect(name, retval, args = [])
-    if @constant and not @constant.instance_methods.include? name
+    method = @constant.instance_method(name) rescue nil
+    if @constant and not method
       raise MockExpectationError, "expected #{@constant_name} to define `#{name}`, but it doesn't"
     end
 
