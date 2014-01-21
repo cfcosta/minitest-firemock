@@ -20,7 +20,7 @@ end
 
 class MyOtherClassTest < MiniTest::Unit::TestCase
   def test_for_correctness
-    mock = MiniTest::FireMock('MyClass')
+    mock = MiniTest::FireMock.new('MyClass')
     mock.expect(:my_method, 42)
     assert_equal 42, mock.my_method
     mock.verify
