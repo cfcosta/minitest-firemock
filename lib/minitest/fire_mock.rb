@@ -36,3 +36,5 @@ class Minitest::FireMock < Minitest::Mock
     nil
   end
 end
+
+MiniTest::FireMock = Minitest::FireMock
