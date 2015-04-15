@@ -50,4 +50,18 @@ class FireMockTest < MiniTest::Unit::TestCase
       mock.expect(:defined_method, 42, [1,2,3])
     end
   end
+
+  def test_valid_mock_with_variable_arity_used
+    mock = MiniTest::FireMock.new('DefinedConstant')
+    mock.expect(:variable_arity_method, 42, [5])
+    assert_equal 42, mock.variable_arity_method(5)
+    mock.verify
+  end
+
+  def test_valid_mock_with_variable_arity_unused
+    mock = MiniTest::FireMock.new('DefinedConstant')
+    mock.expect(:variable_arity_method, 42)
+    assert_equal 42, mock.variable_arity_method
+    mock.verify
+  end
 end
