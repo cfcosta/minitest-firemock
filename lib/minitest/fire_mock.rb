@@ -17,7 +17,7 @@ class MiniTest::FireMock < MiniTest::Mock
 
     if method
       if variable_arity?(method) and args.size > method.arity.abs
-        raise MockExpectationError, "`#{name}` expects 0..#{abs(method.arity)} arguments, given #{args.size}"
+        raise MockExpectationError, "`#{name}` expects 0..#{method.arity.abs} arguments, given #{args.size}"
       elsif !variable_arity?(method) and method.arity != args.size
         raise MockExpectationError, "`#{name}` expects #{method.arity} arguments, given #{args.size}"
       end

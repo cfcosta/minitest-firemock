@@ -51,17 +51,24 @@ class FireMockTest < MiniTest::Unit::TestCase
     end
   end
 
-  def test_valid_mock_with_variable_arity_used
+  def test_valid_mock_with_optional_param_present
     mock = MiniTest::FireMock.new('DefinedConstant')
     mock.expect(:variable_arity_method, 42, [5])
     assert_equal 42, mock.variable_arity_method(5)
     mock.verify
   end
 
-  def test_valid_mock_with_variable_arity_unused
+  def test_valid_mock_with_optional_param_absent
     mock = MiniTest::FireMock.new('DefinedConstant')
     mock.expect(:variable_arity_method, 42)
     assert_equal 42, mock.variable_arity_method
     mock.verify
+  end
+
+  def test_valid_mock_with_too_many_params
+    mock = MiniTest::FireMock.new('DefinedConstant')
+    assert_raises MockExpectationError, "`variable_arity_method` expects 0..1 arguments, given 2" do
+      mock.expect(:variable_arity_method, 42, [6,7])
+    end
   end
 end
