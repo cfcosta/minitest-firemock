@@ -1,6 +1,4 @@
-require 'minitest/unit'
-
-MiniTest::Unit.autorun
+require 'minitest/autorun'
 
 class DefinedConstant
   def defined_method; end

@@ -1,7 +1,7 @@
 require 'test_helper'
 require 'minitest/fire_mock'
 
-class FireMockTest < MiniTest::Unit::TestCase
+class FireMockTest < Minitest::Test
   def test_mock_is_valid_when_not_defined
     mock = MiniTest::FireMock.new('NotDefinedConstant')
     mock.expect(:defined_method, 42)
