@@ -39,7 +39,7 @@ class MiniTest::FireMock < MiniTest::Mock
 
     names.inject(Object) do |constant, name|
       next constant.const_get(name) if constant == Object
-      constant.const_defined?(name) ? constant.const_get(name) : constant.const_missing(name)
+      constant.const_defined?(name) ? constant.const_get(name, false) : constant.const_missing(name)
     end
 
   rescue NameError
