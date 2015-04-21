@@ -27,20 +27,21 @@ class MiniTest::FireMock < MiniTest::Mock
   end
 
   private
-  # Borrowed from ActiveSupport.
+
   def variable_arity?(method)
     method.arity < 0
   end
 
+  # Borrowed from ActiveSupport.
   def constantize(camel_cased_word)
     names = camel_cased_word.split('::')
     names.shift if names.empty? || names.first.empty?
 
-    constant = Object
-    names.each do |name|
-      constant = constant.const_defined?(name) ? constant.const_get(name) : constant.const_missing(name)
+    names.inject(Object) do |constant, name|
+      next constant.const_get(name) if constant == Object
+      constant.const_defined?(name) ? constant.const_get(name) : constant.const_missing(name)
     end
-    constant
+
   rescue NameError
     nil
   end
