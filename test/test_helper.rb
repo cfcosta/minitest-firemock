@@ -10,4 +10,12 @@ module Namespace
   class NamespacedConstant
     def defined_method; end
   end
+
+  class OtherConstant < NamespacedConstant
+    def world; end
+  end
+end
+
+module OtherConstant
+  def hello; end
 end

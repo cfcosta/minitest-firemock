@@ -44,6 +44,24 @@ class FireMockTest < MiniTest::Test
     end
   end
 
+  def test_mock_with_namespace_mocks_correct_const
+    mock = Minitest::FireMock.new('Namespace::OtherConstant')
+    mock.expect(:world, 42)
+
+    assert_raises(MockExpectationError) { mock.expect(:hello, 42) }
+    assert_equal 42, mock.world
+    mock.verify
+  end
+
+  def test_mock_with_const_mocks_correct_const
+    mock = Minitest::FireMock.new('OtherConstant')
+    mock.expect(:hello, 42)
+
+    assert_raises(MockExpectationError) { mock.expect(:world, 42) }
+    assert_equal 42, mock.hello
+    mock.verify
+  end
+
   def test_valid_mock_with_different_arity
     mock = MiniTest::FireMock.new('DefinedConstant')
     assert_raises MockExpectationError, "`defined_method` expects 0 arguments, given 3" do
