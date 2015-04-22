@@ -12,4 +12,6 @@ Gem::Specification.new do |gem|
   gem.test_files    = `git ls-files -- test/*`.split("\n")
   gem.name          = "minitest-firemock"
   gem.require_paths = ["lib"]
+
+  gem.add_dependency 'minitest'
 end
