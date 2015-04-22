@@ -1,4 +1,6 @@
 rvm:
+ - jruby
+ - 1.9.3
  - 2.1
  - 2.2
  - ruby-head
