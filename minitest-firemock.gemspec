@@ -13,5 +13,8 @@ Gem::Specification.new do |gem|
   gem.name          = "minitest-firemock"
   gem.require_paths = ["lib"]
 
+  gem.add_development_dependency 'bundler'
+  gem.add_development_dependency 'rake'
+
   gem.add_dependency 'minitest'
 end
