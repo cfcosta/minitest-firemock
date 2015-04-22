@@ -44,6 +44,8 @@ class FireMockTest < MiniTest::Test
     end
   end
 
+  # TODO: Make sure this test works as expected.
+  # Right now it is passing when it shouldn't be (at least while isolated).
   def test_mock_with_namespace_mocks_correct_const
     mock = Minitest::FireMock.new('Namespace::OtherConstant')
     mock.expect(:world, 42)
@@ -53,6 +55,8 @@ class FireMockTest < MiniTest::Test
     mock.verify
   end
 
+  # TODO: Make sure this test works as expected.
+  # Right now it is passing when it shouldn't be (at least while isolated).
   def test_mock_with_const_mocks_correct_const
     mock = Minitest::FireMock.new('OtherConstant')
     mock.expect(:hello, 42)
