@@ -5,6 +5,8 @@ This gem was designed do make isolated tests more resilient. In isolated tests, 
 
 It's based on the awesome [rspec-fire](https://github.com/xaviershay/rspec-fire) from [Xavier Shay](http://xaviershay.com/).
 
+[![Build Status](https://travis-ci.org/cfcosta/minitest-firemock.svg?branch=master)](https://travis-ci.org/cfcosta/minitest-firemock)
+
 Usage
 -----
 
