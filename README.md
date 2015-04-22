@@ -1,4 +1,4 @@
-Minitest::FireMock
+MiniTest::FireMock
 ==================
 
 This gem was designed do make isolated tests more resilient. In isolated tests, a FireMock is no different than a common mock. The only difference is when the test is called on a not-isolated environment. It checks for the presence of the method on the mocked class, and fails if it isn't there. This adds another layer of security for suit tests, without compromising the isolation of unit tests.
@@ -20,7 +20,7 @@ end
 
 class MyOtherClassTest < MiniTest::Unit::TestCase
   def test_for_correctness
-    mock = Minitest::FireMock.new('MyClass')
+    mock = MiniTest::FireMock.new('MyClass')
     mock.expect(:my_method, 42)
     assert_equal 42, mock.my_method
     mock.verify
@@ -28,7 +28,7 @@ class MyOtherClassTest < MiniTest::Unit::TestCase
 end
 ```
 
-The only real difference of using `Minitest::FireMock` instead of `Minitest::Mock` is that if `MyClass` is defined, and `my_method` isn't there, it'll raise a `MockExpectationError`. It checks also for the arity of the method, so it'll raise a `MockExpectationError` if the real method have a different arity than the expectation.
+The only real difference of using `MiniTest::FireMock` instead of `MiniTest::Mock` is that if `MyClass` is defined, and `my_method` isn't there, it'll raise a `MockExpectationError`. It checks also for the arity of the method, so it'll raise a `MockExpectationError` if the real method have a different arity than the expectation.
 
 TODO
 ----

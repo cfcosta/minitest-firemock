@@ -1,6 +1,6 @@
 require 'minitest/mock'
 
-class Minitest::FireMock < Minitest::Mock
+class MiniTest::FireMock < MiniTest::Mock
   def initialize(constant)
     @constant_name = constant
     @constant = constantize(constant)
@@ -45,5 +45,3 @@ class Minitest::FireMock < Minitest::Mock
     nil
   end
 end
-
-MiniTest::FireMock = Minitest::FireMock
